@@ -19,3 +19,6 @@
 - Slash commands for team workflow (start-issue, submit-pr, update-docs)
 - SlidePanel left sidebar with slide thumbnails, add/delete/reorder (#7)
 - SlideThumbnail with mini CSS-scaled slide preview and slide numbers (#7)
+- PresentationMode with fullscreen, keyboard/click navigation, slide counter (#8)
+- Slide transitions: fade and slide-left with CSS keyframe animations (#9)
+- ThemePicker with 4 preset themes and background color swatches (#10)

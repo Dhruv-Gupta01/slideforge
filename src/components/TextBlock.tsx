@@ -8,12 +8,14 @@ interface TextBlockProps {
   element: SlideElement;
   slideId: string;
   isSelected: boolean;
+  readOnly?: boolean;
 }
 
 export default function TextBlock({
   element,
   slideId,
   isSelected,
+  readOnly,
 }: TextBlockProps) {
   const [isEditing, setIsEditing] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -33,6 +35,7 @@ export default function TextBlock({
   }, [isSelected]);
 
   const handleDoubleClick = (e: React.MouseEvent) => {
+    if (readOnly) return;
     e.stopPropagation();
     setIsEditing(true);
   };

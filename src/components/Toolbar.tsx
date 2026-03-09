@@ -12,6 +12,7 @@ import {
   Play,
   ChevronDown,
 } from "lucide-react";
+import ThemePicker from "./ThemePicker";
 
 export default function Toolbar() {
   const addTextElement = useSlideStore((s) => s.addTextElement);
@@ -109,6 +110,8 @@ export default function Toolbar() {
           </div>
         )}
       </div>
+
+      <ThemePicker />
 
       <div className="w-px h-8 bg-slate-200" />
 

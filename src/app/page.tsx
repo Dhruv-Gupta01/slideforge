@@ -6,10 +6,13 @@ import SlidePanel from "@/components/SlidePanel";
 import PresentationMode from "@/components/PresentationMode";
 import StylePanel from "@/components/StylePanel";
 import { useSlideStore } from "@/store/useSlideStore";
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 
 export default function Home() {
   const isPresenting = useSlideStore((s) => s.isPresenting);
   const selectedElementId = useSlideStore((s) => s.selectedElementId);
+
+  useKeyboardShortcuts();
 
   if (isPresenting) {
     return <PresentationMode />;

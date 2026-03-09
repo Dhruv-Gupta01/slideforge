@@ -1,6 +1,6 @@
 # SlideForge — Project Status
 
-## Current Phase: Setup (Phase 2)
+## Current Phase: Editor Core (Milestone 1)
 
 ## Milestone 1 — Editor Core (Day 1)
 
@@ -8,12 +8,12 @@
 |------|--------|-------|
 | Project scaffold (Next.js + Tailwind + Zustand + react-rnd) | Done | Tech Lead |
 | TypeScript types and Zustand store with all actions | Not Started | Tech Lead |
-| SlideCanvas with 16:9 aspect ratio and scaling | Not Started | Dev 1 |
-| CanvasElement with drag and resize (react-rnd) | Not Started | Dev 1 |
-| TextBlock with inline contentEditable editing | Not Started | Dev 1 |
-| ImageBlock with file upload to data URL | Not Started | Dev 1 |
-| ShapeBlock (rectangle, circle, triangle) | Not Started | Dev 1 |
-| Toolbar — add text / image / shape, delete element | Not Started | Dev 1 |
+| SlideCanvas with 16:9 aspect ratio and scaling | Done | Dev 1 |
+| CanvasElement with drag and resize (react-rnd) | Done | Dev 1 |
+| TextBlock with inline contentEditable editing | Done | Dev 1 |
+| ImageBlock with file upload to data URL | Done | Dev 1 |
+| ShapeBlock (rectangle, circle, triangle) | Done | Dev 1 |
+| Toolbar — add text / image / shape, delete element | Done | Dev 1 |
 | SlidePanel — add / delete / select / reorder slides | Not Started | Dev 2 |
 
 ## Milestone 2 — Present + Polish (Day 2)
@@ -32,4 +32,6 @@
 
 ## Where We Left Off
 
-- Phase 2 (Setup) in progress — scaffold complete, creating setup files
+- Milestone 1 in progress — editor core components (SlideCanvas, CanvasElement, TextBlock, ImageBlock, ShapeBlock, Toolbar) implemented by Dev 1
+- Remaining for Milestone 1: TypeScript types + Zustand store (Tech Lead), SlidePanel (Dev 2)
+- Feature branch `feature/1-slide-canvas` ready for PR review

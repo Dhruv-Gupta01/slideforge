@@ -14,7 +14,7 @@
 | ImageBlock with file upload to data URL | Done | Dev 1 |
 | ShapeBlock (rectangle, circle, triangle) | Done | Dev 1 |
 | Toolbar — add text / image / shape, delete element | Done | Dev 1 |
-| SlidePanel — add / delete / select / reorder slides | Not Started | Dev 2 |
+| SlidePanel — add / delete / select / reorder slides | Done | Dev 2 |
 
 ## Milestone 2 — Present + Polish (Day 2)
 
@@ -32,6 +32,6 @@
 
 ## Where We Left Off
 
-- Milestone 1 in progress — editor core components (SlideCanvas, CanvasElement, TextBlock, ImageBlock, ShapeBlock, Toolbar) implemented by Dev 1
-- Remaining for Milestone 1: TypeScript types + Zustand store (Tech Lead), SlidePanel (Dev 2)
-- Feature branch `feature/1-slide-canvas` ready for PR review
+- Milestone 1 complete — all editor core components implemented
+- SlidePanel with thumbnails, add/delete/reorder slides implemented by Dev 2
+- Ready to start Milestone 2 (Present + Polish)

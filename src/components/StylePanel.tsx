@@ -7,6 +7,8 @@ import {
   AlignCenter,
   AlignRight,
   Bold,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
 
 export default function StylePanel() {
@@ -15,6 +17,8 @@ export default function StylePanel() {
   const selectedElementId = useSlideStore((s) => s.selectedElementId);
   const updateElement = useSlideStore((s) => s.updateElement);
   const pushHistory = useSlideStore((s) => s.pushHistory);
+  const bringForward = useSlideStore((s) => s.bringForward);
+  const sendBackward = useSlideStore((s) => s.sendBackward);
 
   const currentSlide = slides[currentSlideIndex];
   const element = currentSlide?.elements.find(
@@ -42,6 +46,27 @@ export default function StylePanel() {
       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
         Style
       </p>
+
+      {/* Z-ordering — all elements */}
+      <div className="flex items-center justify-between">
+        <span className="text-xs text-slate-500">Layer</span>
+        <div className="flex gap-1">
+          <button
+            onClick={() => bringForward(element.id)}
+            className="p-1.5 rounded bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors"
+            title="Bring Forward"
+          >
+            <ArrowUp size={14} />
+          </button>
+          <button
+            onClick={() => sendBackward(element.id)}
+            className="p-1.5 rounded bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors"
+            title="Send Backward"
+          >
+            <ArrowDown size={14} />
+          </button>
+        </div>
+      </div>
 
       {/* Opacity — all elements */}
       <label className="flex flex-col gap-1">

@@ -17,3 +17,5 @@
 - ShapeBlock supporting rectangle, circle, and triangle (#5)
 - Toolbar with add text/image/shape and delete element actions (#6)
 - Slash commands for team workflow (start-issue, submit-pr, update-docs)
+- SlidePanel left sidebar with slide thumbnails, add/delete/reorder (#7)
+- SlideThumbnail with mini CSS-scaled slide preview and slide numbers (#7)

@@ -1,6 +1,6 @@
 # SlideForge — Project Status
 
-## Current Phase: Editor Core (Milestone 1)
+## Current Phase: Present + Polish (Milestone 2)
 
 ## Milestone 1 — Editor Core (Day 1)
 
@@ -20,9 +20,9 @@
 
 | Task | Status | Owner |
 |------|--------|-------|
-| PresentationMode — fullscreen, keyboard navigation | Not Started | Dev 2 |
-| Slide transitions (fade, slide-left via CSS) | Not Started | Dev 2 |
-| Background / theme picker (3-4 presets) | Not Started | Dev 2 |
+| PresentationMode — fullscreen, keyboard navigation | Done | Dev 2 |
+| Slide transitions (fade, slide-left via CSS) | Done | Dev 2 |
+| Background / theme picker (3-4 presets) | Done | Dev 2 |
 | StylePanel — font size, color, weight, opacity, alignment | Not Started | Tech Lead |
 | Element z-ordering (bring forward / send back) | Not Started | Tech Lead |
 | Undo / redo (Zustand temporal middleware) | Not Started | Tech Lead |
@@ -33,5 +33,5 @@
 ## Where We Left Off
 
 - Milestone 1 complete — all editor core components implemented
-- SlidePanel with thumbnails, add/delete/reorder slides implemented by Dev 2
-- Ready to start Milestone 2 (Present + Polish)
+- Dev 2 day 2 tasks complete: PresentationMode, transitions, ThemePicker
+- Remaining: StylePanel, z-ordering, undo/redo, keyboard shortcuts, polish, deploy

@@ -3,6 +3,7 @@
 import Toolbar from "@/components/Toolbar";
 import SlideCanvas from "@/components/SlideCanvas";
 import SlidePanel from "@/components/SlidePanel";
+import PresentationMode from "@/components/PresentationMode";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <SlidePanel />
         <SlideCanvas />
       </div>
+      <PresentationMode />
     </div>
   );
 }

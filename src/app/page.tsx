@@ -1,28 +1,44 @@
 "use client";
 
-import Toolbar from "@/components/Toolbar";
-import SlideCanvas from "@/components/SlideCanvas";
-import SlidePanel from "@/components/SlidePanel";
-import PresentationMode from "@/components/PresentationMode";
-import StylePanel from "@/components/StylePanel";
-import { useSlideStore } from "@/store/useSlideStore";
+import { useState, useCallback } from "react";
+import Toolbar from "@/presentation/views/editor/Toolbar";
+import SlideCanvas from "@/presentation/views/editor/SlideCanvas";
+import SlidePanel from "@/presentation/views/editor/SlidePanel";
+import StylePanel from "@/presentation/views/editor/StylePanel";
+import PresentationMode from "@/presentation/views/presentation/PresentationMode";
+import ErrorBoundary from "@/presentation/views/ui/ErrorBoundary";
+import UserNameDialog from "@/presentation/views/collab/UserNameDialog";
+import { useEditorViewModel } from "@/presentation/viewmodels/useEditorViewModel";
+import { useKeyboardShortcuts } from "@/presentation/hooks/useKeyboardShortcuts";
+import { useCollabConnection } from "@/presentation/hooks/useCollabConnection";
 
 export default function Home() {
-  const isPresenting = useSlideStore((s) => s.isPresenting);
-  const selectedElementId = useSlideStore((s) => s.selectedElementId);
+  const vm = useEditorViewModel();
+  const [showNameDialog, setShowNameDialog] = useState(false);
 
-  if (isPresenting) {
+  useKeyboardShortcuts();
+  useCollabConnection(
+    useCallback(() => setShowNameDialog(true), [])
+  );
+
+  if (vm.isPresenting) {
     return <PresentationMode />;
   }
 
   return (
-    <div className="h-screen w-screen flex flex-col">
-      <Toolbar />
-      <div className="flex-1 flex overflow-hidden">
-        <SlidePanel />
-        <SlideCanvas />
-        {selectedElementId && <StylePanel />}
+    <ErrorBoundary>
+      <div className="h-screen w-screen flex flex-col">
+        <Toolbar />
+        <div className="flex-1 flex overflow-hidden">
+          <SlidePanel />
+          <SlideCanvas />
+          {vm.hasSelection && <StylePanel />}
+        </div>
       </div>
-    </div>
+      <UserNameDialog
+        isOpen={showNameDialog}
+        onClose={() => setShowNameDialog(false)}
+      />
+    </ErrorBoundary>
   );
 }

@@ -1,0 +1,5 @@
+{
+  "name": "slideforge-collab",
+  "main": "partykit/server.ts",
+  "compatibilityDate": "2024-01-01"
+}

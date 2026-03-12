@@ -9,7 +9,10 @@ let provider: YPartyKitProvider | null = null;
 let connected = false;
 
 const PARTYKIT_HOST =
-  process.env.NEXT_PUBLIC_PARTYKIT_HOST || "localhost:1999";
+  process.env.NEXT_PUBLIC_PARTYKIT_HOST ||
+  (typeof window !== "undefined" && window.location.hostname !== "localhost"
+    ? "slideforge-collab.dhruv-gupta01.partykit.dev"
+    : "localhost:1999");
 
 export function isCollabActive(): boolean {
   return connected;

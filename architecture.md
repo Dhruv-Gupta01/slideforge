@@ -52,6 +52,37 @@ ThemePicker is a dropdown in the Toolbar. It offers 4 preset themes (Light, Dark
 
 Thumbnails are rendered by wrapping the actual slide content in a container with `transform: scale(0.15)` and `overflow: hidden`. No separate canvas rendering.
 
+## Real-Time Collaboration
+
+Optional multi-user editing powered by Yjs (CRDT) + PartyKit (WebSocket relay).
+
+### Data Flow
+
+```
+Zustand Store ←→ Yjs Document ←→ YPartyKitProvider ←→ PartyKit Server ←→ Other Clients
+```
+
+### Sync Architecture (Clean Architecture)
+
+```
+src/data/sync/
+├── syncAdapter.ts     — join/leave room, manages YPartyKitProvider connection
+├── yjsDocument.ts     — creates and manages the shared Yjs document (Y.Doc)
+├── storeToYjs.ts      — pushes Zustand store state into the Yjs document
+├── yjsToStore.ts      — observes Yjs changes and updates Zustand store
+└── awareness.ts       — user presence (cursors, names, colors)
+```
+
+### Server
+
+`partykit/server.ts` — ~10 line WebSocket relay using `y-partykit`'s `onConnect()`. Deployed to Cloudflare's edge via `npx partykit deploy`. See [partykit-deployment.md](./partykit-deployment.md) for deployment details.
+
+### Key Design Decisions
+
+- **Yjs as source of truth during collab** — when connected, Yjs document drives the Zustand store (not the other way around)
+- **Store-first initialization** — first user to join a room pushes their slides into the empty Yjs doc; subsequent joiners sync from it
+- **Persistence via Durable Objects** — PartyKit persists the Yjs document in Cloudflare storage (snapshot mode)
+
 ## Folder Structure
 
 ```
@@ -74,6 +105,15 @@ src/
 │   └── PresentationMode.tsx
 ├── store/
 │   └── useSlideStore.ts
+├── data/
+│   ├── store/
+│   │   └── useSlideStore.ts
+│   └── sync/
+│       ├── syncAdapter.ts
+│       ├── yjsDocument.ts
+│       ├── storeToYjs.ts
+│       ├── yjsToStore.ts
+│       └── awareness.ts
 ├── lib/
 │   ├── defaults.ts
 │   └── utils.ts
@@ -93,3 +133,5 @@ src/
 | Thumbnails | CSS scale transform | No separate rendering pass needed |
 | Slide transitions | CSS @keyframes | No animation library needed, lightweight |
 | Presentation scaling | Same CSS scale approach | Consistent with editor canvas scaling |
+| Real-time sync | Yjs + PartyKit | CRDT handles conflicts automatically, PartyKit provides managed WebSocket infrastructure |
+| Sync persistence | Cloudflare Durable Objects | No separate database needed, Yjs doc is the persistence layer |

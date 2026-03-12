@@ -22,3 +22,9 @@
 - PresentationMode with fullscreen, keyboard/click navigation, slide counter (#8)
 - Slide transitions: fade and slide-left with CSS keyframe animations (#9)
 - ThemePicker with 4 preset themes and background color swatches (#10)
+- Real-time collaboration with Yjs CRDT + PartyKit WebSocket relay
+- Clean architecture refactor: entities, use cases, controllers, MVVM pattern
+- Sync adapter layer (`src/data/sync/`) for bidirectional Zustand ↔ Yjs synchronization
+- User presence awareness (cursors, names, colors) via Yjs awareness protocol
+- PartyKit server deployed to Cloudflare edge (`slideforge-collab.dhruv-gupta01.partykit.dev`)
+- PartyKit deployment documentation (`partykit-deployment.md`)

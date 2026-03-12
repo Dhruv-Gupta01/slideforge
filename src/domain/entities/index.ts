@@ -8,3 +8,6 @@ export type { Slide } from "./Slide";
 export { canDeleteSlide, getMaxZIndex, findElement } from "./Slide";
 
 export type { HistoryState } from "./History";
+
+export type { CollabUser } from "./CollabUser";
+export { getRandomUserColor } from "./CollabUser";
